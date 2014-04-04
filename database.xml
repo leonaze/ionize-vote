@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql>
+    <name>Ionize Vote Module Database Creation</name>
+    <version>1.0</version>
+    <license>Open Source MIT license</license>
+ 
+    <!--
+    Module's tables
+    Prefixed by module_<module name> to avoid collision
+    -->
+    <tables>
+ 
+        <query>
+            CREATE TABLE IF NOT EXISTS module_vote_name (
+                id_vote INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+                name VARCHAR(255) NOT NULL,
+                PRIMARY KEY (id_vote)
+            )
+            ENGINE = InnoDB
+            AUTO_INCREMENT = 1
+            DEFAULT CHARACTER SET = utf8
+            COLLATE = utf8_unicode_ci;
+        </query>
+
+        <query>
+			CREATE TABLE IF NOT EXISTS module_vote_result (
+				id_vote_result int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+				id_vote int(11) UNSIGNED NOT NULL DEFAULT 0,
+				keyword varchar(255) NOT NULL,
+				email varchar(255) NOT NULL,
+				ip varchar(40) NOT NULL,
+				status tinyint(3) UNSIGNED DEFAULT 0,
+				created datetime NOT NULL DEFAULT 0000-00-00 00:00:00,
+				validated datetime NOT NULL DEFAULT 0000-00-00 00:00:00,
+				PRIMARY KEY (id_vote_result)
+			) 
+			ENGINE = InnoDB
+            AUTO_INCREMENT = 1
+            DEFAULT CHARACTER SET = utf8
+            COLLATE = utf8_unicode_ci;
+        </query>
+ 
+    </tables>
+ 
+    <!--
+        Content inserted at module's installation
+    -->
+    <content>
+ 
+    </content>
+</sql>
